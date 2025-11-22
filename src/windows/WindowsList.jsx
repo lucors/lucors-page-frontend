@@ -18,8 +18,7 @@ for (const [path, loader] of Object.entries(modules)) {
 export default function WindowsList() {
   const windowsList = useSelector((state) => state.windows.list) ?? [];
 
-  useEffect(() => {}, [loaded]);
-
+  if (!loaded) return;
   return (
     <div id="windows">
       {windowsList.map((v) => {
