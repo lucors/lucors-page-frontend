@@ -5,6 +5,7 @@ import { v4 } from "uuid";
 export const windowsSlice = createSlice({
   name: "windows",
   initialState: {
+    ready: false,
     list: [],
     current: null,
   },
@@ -61,6 +62,9 @@ export const windowsSlice = createSlice({
       state.current = state.list.find((v) => v.id === payload);
       saveCurrentWindowToURI(state);
     },
+    setReady: (state, { payload }) => {
+      state.ready = payload;
+    },
   },
 });
 
@@ -111,6 +115,7 @@ export const {
   deleteAllWindows,
   updateWindow,
   setCurrentWindowById,
+  setReady
 } = windowsSlice.actions;
 
 export default windowsSlice.reducer;
