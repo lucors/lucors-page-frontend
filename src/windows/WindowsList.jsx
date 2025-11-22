@@ -1,16 +1,24 @@
 import {useSelector} from "react-redux";
 import Window from "./Window";
-import {Suspense} from "react";
+import {Suspense, useEffect} from "react";
 import {appsMetas} from "#common/apps.js";
 import WindowLoading from "#windows/WindowLoading.jsx";
 
+let loaded = false;
+let counter = 0;
 const modules = import.meta.glob('../apps/*/shared.jsx');
-for (const path in modules) {
-  modules[path]().then((module) => console.log(`Imported ${path}`));
+for (const [path, loader] of Object.entries(modules)) {
+  loader().then(() => {
+    counter++;
+    console.log(`Imported ${path}`);
+    loaded = (Object.entries(modules).length === counter)
+  });
 }
 
 export default function WindowsList() {
   const windowsList = useSelector((state) => state.windows.list) ?? [];
+
+  useEffect(() => {}, [loaded]);
 
   return (
     <div id="windows">
