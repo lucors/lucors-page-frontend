@@ -14,6 +14,7 @@ const specialKeys = [
 
 export default function Console() {
   const containerRef = useRef(null);
+  const inputRef = useRef(null);
   const [log, setLog] = useState(welcomeMessage);
   const [command, setCommand] = useState("");
   const [isFocused, setIsFocused] = useState(false);
@@ -54,27 +55,63 @@ export default function Console() {
       handleCommand();
       return;
     }
-    if (specialKeys.includes(event.key)) {
-      return;
-    }
     if (event.key === "Backspace") {
       setLog(log.slice(0, -1));
       setCommand(command.slice(0, -1));
       return;
     }
-    setCommand(command + event.key);
-    setLog(log + event.key);
+    if (specialKeys.includes(event.key)) {
+      return;
+    }
+  };
+
+  const handleInput = (event) => {
+    const e = event.nativeEvent;
+
+    if ((e.inputType === "insertText" || e.inputType === "insertFromPaste") && e.data) {
+      const text = e.data;
+      setCommand(prev => prev + text);
+      setLog(prev => prev + text);
+      if (inputRef.current) inputRef.current.value = "";
+      return;
+    }
+
+    if (e.inputType === "deleteContentBackward") {
+      setCommand(prev => prev.slice(0, -1));
+      setLog(prev => prev.slice(0, -1));
+      if (inputRef.current) inputRef.current.value = "";
+    }
+  };
+
+  const focusInput = () => {
+    inputRef.current?.focus();
   };
 
   return (
-    <div className="console-container" ref={containerRef} tabIndex={0}
-      onFocus={() => setIsFocused(true)}
-      onBlur={() => setIsFocused(false)} 
-      onKeyDown={handleKeyDown}>
+    <div
+      ref={containerRef}
+      className="console-container"
+      tabIndex={0}
+      onClick={focusInput}
+      onTouchStart={focusInput}
+    >
       <pre>
         {log}
         <span className={`blinking-cursor ${isFocused}`}></span>
       </pre>
+
+      <input
+        ref={inputRef}
+        className="console-hidden-input"
+        value=""
+        autoCorrect="off"
+        autoCapitalize="none"
+        spellCheck={false}
+        onFocus={() => setIsFocused(true)}
+        onBlur={() => setIsFocused(false)}
+        onKeyDown={handleKeyDown}
+        onInput={handleInput}
+      />
     </div>
   );
 }
