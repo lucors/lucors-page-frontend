@@ -111,3 +111,9 @@
 .button.archive-button > * {
   text-align: center;
 }
+
+@media screen and (min-width: 320px) and (max-width: 768px) {
+  .window.expanded .projectsRoot {
+    min-width: auto;
+  }
+}

@@ -201,10 +201,14 @@
   #menuBox {
     -webkit-box-shadow: inset 0 0 0 3px #36363c;
     box-shadow: inset 0 0 0 3px #36363c;
-    margin-bottom: 0;
     border-radius: 0 var(--radius1) 0 0;
     border: none;
-    margin-bottom: 0.5em;
+    margin-bottom: 0em;
+    font-size: 1.2em;
+  }
+
+  #menuBox .button * {
+    font-size: 1em;
   }
 
   #startButt {
