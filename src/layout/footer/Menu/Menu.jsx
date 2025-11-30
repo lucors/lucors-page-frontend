@@ -3,7 +3,6 @@ import {useSelector} from "react-redux";
 import {useEffect, useRef} from "react";
 import store from "#store/store";
 import "./Menu.css";
-import FullscreenButton from "./FullscreenButton";
 import ShutdownButton from "./ShutdownButton";
 import SettingsButton from "./SettingsButton";
 import {setMenu} from "#store/menuSlice.js";
@@ -172,7 +171,6 @@ export default function Menu() {
         {/*</div>*/}
         <div className="actions">
           <SettingsButton/>
-          <FullscreenButton/>
           <ShutdownButton/>
         </div>
       </div>

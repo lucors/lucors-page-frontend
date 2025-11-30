@@ -14,9 +14,23 @@ export const META = new AppMeta(
 
 i18next.addResourceBundle("en", TYPE, {
   title: "Settings",
+  screen1: "Screen mode",
+  screen2: "Fullscreen",
+  screen3: "Tab",
+  radius1: "Rounding radius",
+  radius2: "Soft",
+  radius3: "Sharp",
+  lang1: "Language",
 });
 i18next.addResourceBundle("ru", TYPE, {
   title: "Настройки",
+  screen1: "Режим экрана",
+  screen2: "Полноэкранный",
+  screen3: "Вкладка",
+  radius1: "Радиус скругления",
+  radius2: "Мягкий",
+  radius3: "Острый",
+  lang1: "Язык",
 });
 
 cmds.set("settings", () => {

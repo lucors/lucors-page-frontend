@@ -2,39 +2,31 @@ import {memo} from "react";
 import Window from "#windows/Window";
 import {META} from "./shared";
 import "./WindowSettings.css";
-import {useDispatch, useSelector} from "react-redux";
-import {setRadius} from "#store/settingsSlice.js";
 import {ChangeLanguageButton} from "#layout/footer/FooterRight.jsx";
-import Button from "#common/Button.jsx";
 import {useTranslation} from "react-i18next";
 import {TITLE_KEY} from "#common/consts.js";
-
-export function FlatRadiusButton() {
-  const radius = useSelector((state) => state.settings.radius);
-  const dispatch = useDispatch();
-
-  function onRadiusChange() {
-    dispatch(setRadius((radius > 0) ? 0 : 0.2));
-  }
-
-  return (
-    <Button className="primary" onClick={onRadiusChange}>
-      {(radius > 0) ? "Мягкий" : "Острый"}
-    </Button>
-  );
-}
+import {FlatRadiusButton} from "#apps/settings/FlatRadiusButton.jsx";
+import {FullscreenButton} from "#apps/settings/FullscreenButton.jsx";
 
 function Content() {
+  const {t} = useTranslation(META.type);
+
   return (
     <div className="section">
       <div className="setting-row-wrapper">
-        <label>Радиус скругления</label>
+        <label>{t("screen1")}</label>
+        <div className="setting-row">
+          <FullscreenButton/>
+        </div>
+      </div>
+      <div className="setting-row-wrapper">
+        <label>{t("radius1")}</label>
         <div className="setting-row">
           <FlatRadiusButton/>
         </div>
       </div>
       <div className="setting-row-wrapper">
-        <label>Язык</label>
+        <label>{t("lang1")}</label>
         <div className="setting-row">
           <ChangeLanguageButton primary/>
         </div>
