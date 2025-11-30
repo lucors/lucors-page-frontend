@@ -1,0 +1,16 @@
+#profile-button {
+  border-radius: var(--radius1);
+  width: 80%;
+  height: 1.8em;
+  cursor: pointer;
+}
+#profile-button > .ico {
+  background-image: url("img/contacts.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  height: 100%;
+}
+#profile-button:hover {
+  background-color: #bfceff24;
+}

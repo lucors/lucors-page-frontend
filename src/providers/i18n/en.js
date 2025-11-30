@@ -5,6 +5,7 @@ export default {
     welcome: "Hello and welcome to my site~",
     new_window: "In new window",
     open_settings: "Open settings",
+    open_profile: "Open profile",
     set_fullscreen: "Toggle fullScreen",
     shutdown: "Shutdown",
     loading: "Loading",

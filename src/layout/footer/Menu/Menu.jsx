@@ -16,6 +16,7 @@ import {META as appMetaAppsList} from "#apps/apps-list/shared.jsx";
 import {META as appMetaProjects} from "#apps/projects/shared.jsx";
 import {META as appMetaAbout} from "#apps/about/shared.jsx";
 import {META as appMetaTesting} from "#apps/testing/shared.jsx";
+import ProfileButton from "#layout/footer/Menu/ProfileButton.jsx";
 
 export const MENU_I18_KEY = "_menu";
 
@@ -170,8 +171,9 @@ export default function Menu() {
         {/*  <img className="logoType" src="img/lucors-heart-crop-alpha.png"/>*/}
         {/*</div>*/}
         <div className="actions">
-          <SettingsButton/>
-          <ShutdownButton/>
+          <ProfileButton onClick={hideMenu}/>
+          <SettingsButton onClick={hideMenu}/>
+          <ShutdownButton onClick={hideMenu}/>
         </div>
       </div>
       <div id="menuContent">

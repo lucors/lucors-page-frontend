@@ -3,6 +3,7 @@ import menuReducer from './menuSlice'
 import screenReducer from "./screenSlice";
 import windowsReducer from "./windowsSlice";
 import settingsReducer from "./settingsSlice";
+import authReducer from "./authSlice.js";
 import localforage from "localforage";
 
 async function loadFromLocalStorage() {
@@ -31,6 +32,7 @@ const store = configureStore({
     screen: screenReducer,
     windows: windowsReducer,
     settings: settingsReducer,
+    auth: authReducer,
   },
   preloadedState: await loadFromLocalStorage()
 });

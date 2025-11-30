@@ -1,11 +1,5 @@
 import store from "#store/store.js";
-import {
-  addWindow,
-  byType,
-  setCurrentWindowById,
-  updateWindow,
-} from "#store/windowsSlice.js";
-import { appsMetas } from "./apps";
+import {addWindow, byType, setCurrentWindowById, updateWindow,} from "#store/windowsSlice.js";
 
 export function withDoubleClick(ref, onDoubleClick, onClick = null) {
   return (event) => {
@@ -77,14 +71,6 @@ export function addWindowFromUri(params) {
   );
 }
 
-export function isInIframe() {
-  try {
-    return window.self !== window.top;
-  } catch (e) {
-    return true;
-  }
-}
-
 export function getSingletonAppCreator(type, title, icon, stateOptions = {}) {
   return function () {
     const win = byType(store.getState(), type);
@@ -106,4 +92,20 @@ export function getSingletonAppCreator(type, title, icon, stateOptions = {}) {
       })
     );
   };
+}
+
+export function parseJwt(token) {
+  const base64Url = token.split('.')[1];
+  const base64 = base64Url
+    .replace(/-/g, '+')
+    .replace(/_/g, '/');
+
+  const jsonPayload = decodeURIComponent(
+    atob(base64)
+      .split('')
+      .map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2))
+      .join('')
+  );
+
+  return JSON.parse(jsonPayload);
 }
