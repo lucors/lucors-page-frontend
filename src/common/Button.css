@@ -46,6 +46,7 @@
   text-align: start;
   padding: 0.63em 0.4em 0.63em 0.4em;
   text-decoration: none;
+  width: inherit;
 }
 
 .button .ajax {
@@ -62,6 +63,7 @@
   color: var(--color-textButtton);
   border-radius: var(--radius1);
   text-shadow: none;
+  width: fit-content;
 }
 
 .button.inline > * {
