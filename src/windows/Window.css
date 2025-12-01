@@ -367,6 +367,7 @@
   overflow-x: hidden;
   display: -ms-grid;
   display: grid;
+  word-break: break-word;
 }
 
 .window .main > .right > .window-loader {

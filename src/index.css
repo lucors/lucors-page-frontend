@@ -329,6 +329,9 @@ div.code-toolbar > .toolbar > .toolbar-item > span {
   background-color: var(--color-pushedButton) !important;
   border-radius: var(--radius1) !important;
 }
+.window.expanded .code-toolbar {
+  max-width: 90vw;
+}
 
 .section.arcticle-list {
   display: -webkit-box;
