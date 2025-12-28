@@ -5,6 +5,7 @@ import Header from "#layout/header/Header";
 import Main from "#layout/main/Main.jsx";
 import { setShutdown } from "#store/screenSlice.js";
 import { lazy, Suspense } from "react";
+import {Garland} from "#common/Garland.jsx";
 
 const Dvd = lazy(() => import("#apps/dvd/Dvd.jsx"));
 
@@ -20,6 +21,7 @@ function App() {
   return (
     <>
       {shutdown && <Suspense><Dvd fullscreen={true} onClick={deshutdown} /></Suspense>}
+      <Garland />
       <Header />
       <Main />
       <Footer />
