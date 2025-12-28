@@ -86,16 +86,6 @@ body {
   transition-timing-function: ease-in;
 }
 
-#dot-overlay {
-  background-image: url(/img/dot.png);
-  background-size: 2px 2px;
-  pointer-events: none;
-  z-index: 999;
-  width: 100dvw;
-  height: 100dvh;
-  position: fixed;
-}
-
 #monitor {
   display: none;
   width: auto;

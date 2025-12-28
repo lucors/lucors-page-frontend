@@ -95,6 +95,7 @@ export default function Console() {
       onClick={focusInput}
       onTouchStart={focusInput}
     >
+      <div className="dot-overlay"></div>
       <pre>
         {log}
         <span className={`blinking-cursor ${isFocused}`}></span>
