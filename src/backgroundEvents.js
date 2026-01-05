@@ -14,7 +14,7 @@ export const cursor = {
   dY: function () {
     return this.y - this.startY;
   },
-  tooglePointer: function () {
+  togglePointer: function () {
     if (flags.dragging) {
       $("body").css({
         cursor: "grab",
@@ -28,14 +28,17 @@ export const cursor = {
 };
 
 export const flags = {
-  debug: false,
   dragging: false,
-  colorful: true,
   resizeType: 0,
   resize: false,
   selection: false,
   setCurrentBlock: false,
 };
+
+/**
+ * Погрешность расстояния курсора от края окна для растягивания
+ */
+const aprx = 6;
 
 window.checkFullscreen = () => {
   let fs = !(
@@ -171,9 +174,15 @@ function mouseMoveHandler(event) {
           break;
       }
     } else if (!mobile) {
-      const aprx = 5;
+
+      if (event.target.tagName === 'IFRAME') {
+        mouseOutHandler();
+        win.removeClass("resize-left resize-right resize-top resize-bottom");
+        return;
+      }
+
       if (flags.resizeType > 0) {
-        $("main").removeClass("resize-x resize-y");
+        mouseOutHandler();
         win.removeClass("resize-left resize-right resize-top resize-bottom");
         flags.resizeType = 0;
       }
@@ -255,7 +264,7 @@ function mouseUpHandler(event) {
     const win = $(".window.current");
     prevent = true;
     flags.dragging = false;
-    cursor.tooglePointer();
+    cursor.togglePointer();
     if (!storedCurrentWindow) return;
     store.dispatch(
       updateWindow({

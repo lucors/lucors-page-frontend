@@ -83,7 +83,7 @@ export default memo(function Window({
       updateEntity.x = event.pageX - stored()?.width / 2;
     }
     dispatch(updateWindow(updateEntity));
-    cursor.tooglePointer();
+    cursor.togglePointer();
   }
 
   function close() {
