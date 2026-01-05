@@ -2,6 +2,7 @@ import $ from "jquery";
 import store from "./store/store";
 import { setFullscreen, setMobile } from "./store/screenSlice";
 import { updateWindow } from "./store/windowsSlice";
+import {CORNER_APRX} from "#common/consts.js";
 
 export const cursor = {
   startX: 0,
@@ -34,11 +35,6 @@ export const flags = {
   selection: false,
   setCurrentBlock: false,
 };
-
-/**
- * Погрешность расстояния курсора от края окна для растягивания
- */
-const aprx = 6;
 
 window.checkFullscreen = () => {
   let fs = !(
@@ -188,40 +184,40 @@ function mouseMoveHandler(event) {
       }
 
       if (
-        cursor.x > box.left - aprx &&
-        cursor.x < box.left + aprx &&
-        cursor.y > box.top - aprx &&
-        cursor.y < box.bottom + aprx
+        cursor.x > box.left - CORNER_APRX &&
+        cursor.x < box.left + CORNER_APRX &&
+        cursor.y > box.top - CORNER_APRX &&
+        cursor.y < box.bottom + CORNER_APRX
       ) {
         $("main").addClass("resize-x");
         win.addClass("resize-left");
         flags.resizeType = 1;
         return;
       } else if (
-        cursor.x > box.right - aprx &&
-        cursor.x < box.right + aprx &&
-        cursor.y > box.top - aprx &&
-        cursor.y < box.bottom + aprx
+        cursor.x > box.right - CORNER_APRX &&
+        cursor.x < box.right + CORNER_APRX &&
+        cursor.y > box.top - CORNER_APRX &&
+        cursor.y < box.bottom + CORNER_APRX
       ) {
         $("main").addClass("resize-x");
         win.addClass("resize-right");
         flags.resizeType = 2;
         return;
       } else if (
-        cursor.y > box.top - aprx &&
-        cursor.y < box.top + aprx &&
-        cursor.x > box.left - aprx &&
-        cursor.x < box.right + aprx
+        cursor.y > box.top - CORNER_APRX &&
+        cursor.y < box.top + CORNER_APRX &&
+        cursor.x > box.left - CORNER_APRX &&
+        cursor.x < box.right + CORNER_APRX
       ) {
         $("main").addClass("resize-y");
         win.addClass("resize-top");
         flags.resizeType = 3;
         return;
       } else if (
-        cursor.y > box.bottom - aprx &&
-        cursor.y < box.bottom + aprx &&
-        cursor.x > box.left - aprx &&
-        cursor.x < box.right + aprx
+        cursor.y > box.bottom - CORNER_APRX &&
+        cursor.y < box.bottom + CORNER_APRX &&
+        cursor.x > box.left - CORNER_APRX &&
+        cursor.x < box.right + CORNER_APRX
       ) {
         $("main").addClass("resize-y");
         win.addClass("resize-bottom");
