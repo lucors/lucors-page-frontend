@@ -11,7 +11,7 @@ const modules = import.meta.glob('../apps/*/shared.jsx');
 for (const [path, loader] of Object.entries(modules)) {
   loader().then(() => {
     counter++;
-    console.log(`Imported ${path}`);
+    console.debug(`Imported ${path}`);
     store.dispatch(setReady(Object.entries(modules).length === counter));
   });
 }

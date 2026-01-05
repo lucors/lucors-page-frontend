@@ -92,7 +92,7 @@ function LogoutButton() {
       })
       .then(async (response) => {
         const {data} = response;
-        console.log(data);
+        console.debug(data);
       })
       .catch((error) => {
         console.error(error);

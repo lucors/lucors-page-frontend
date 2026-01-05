@@ -14,7 +14,6 @@ function App() {
   const shutdown = useSelector((state) => state.screen.shutdown);
 
   function deshutdown() {
-    console.log("Доброе утро!");
     dispatch(setShutdown(false));
   }
 

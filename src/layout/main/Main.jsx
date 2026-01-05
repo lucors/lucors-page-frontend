@@ -13,7 +13,6 @@ function Stars({ mobile }) {
   useEffect(() => {
     const starsContainer = document.getElementById('starsContainer');
     const starCount = mobile ? 50 : 150;
-    console.log(starCount);
 
     for (let i = 0; i < starCount; i++) {
       createStar();

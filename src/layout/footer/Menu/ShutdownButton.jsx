@@ -7,7 +7,6 @@ export default function ShutdownButton({onClick}) {
   const {t} = useTranslation();
 
   function shutdown() {
-    console.log("Спокойной ночи~");
     store.dispatch(setShutdown(true));
   }
 
