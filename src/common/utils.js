@@ -25,6 +25,7 @@ export function saveLocation(params) {
   }
   const url = new URL(window.location.href);
   for (const key in params) {
+    url.search = "";
     url.searchParams.set(key, String(params[key]).replaceAll(" ", "~"));
   }
   window.history.pushState(null, "", url);
