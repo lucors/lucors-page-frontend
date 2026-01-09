@@ -275,7 +275,7 @@
 }
 
 .window:has(.makishimudesu) {
-  --contacts-hue-rotate: 122deg;
+  --contacts-hue-rotate: 200deg;
 }
 
 .window:has(.makishimudesu) > .body {
@@ -289,9 +289,9 @@
 /*.window:has(.makishimudesu) .heart {*/
 /*  color: #c9375f;*/
 /*}*/
-.window:has(.makishimudesu) .aboutmeHrefs {
-  filter: hue-rotate(calc(var(--contacts-hue-rotate) * -0.1));
-}
+/*.window:has(.makishimudesu) .aboutmeHrefs {*/
+/*  filter: hue-rotate(calc(var(--contacts-hue-rotate) * -0.1));*/
+/*}*/
 
 
 /*MOBILE*/
