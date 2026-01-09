@@ -9,6 +9,7 @@ import {setMenu} from "#store/menuSlice.js";
 import FrameButton from "#apps/frame/FrameButton.jsx";
 import {useTranslation} from "react-i18next";
 import Button from "#common/Button.jsx";
+import ProfileButton from "#layout/footer/Menu/ProfileButton.jsx";
 import i18next from "i18next";
 import {META as appMetaWelcome} from "#apps/welcome/shared.jsx";
 import {META as appMetaContacts} from "#apps/contacts/shared.jsx";
@@ -16,7 +17,7 @@ import {META as appMetaAppsList} from "#apps/apps-list/shared.jsx";
 import {META as appMetaProjects} from "#apps/projects/shared.jsx";
 import {META as appMetaAbout} from "#apps/about/shared.jsx";
 import {META as appMetaTesting} from "#apps/testing/shared.jsx";
-import ProfileButton from "#layout/footer/Menu/ProfileButton.jsx";
+import {META as appMetaGallery} from "#apps/gallery/shared.jsx";
 
 export const MENU_I18_KEY = "_menu";
 
@@ -28,6 +29,7 @@ i18next.addResourceBundle("en", MENU_I18_KEY, {
   menu8: "About page",
   menu9: "Apps",
   menu10: "About tests",
+  menu11: "Gallery",
 });
 i18next.addResourceBundle("ru", MENU_I18_KEY, {
   menuSectionTitle: "Общее",
@@ -37,6 +39,7 @@ i18next.addResourceBundle("ru", MENU_I18_KEY, {
   menu8: "О сайте",
   menu9: "Приложения",
   menu10: "О тестах",
+  menu11: "Галерея",
 });
 
 export const contentMenu = [
@@ -46,14 +49,19 @@ export const contentMenu = [
     action: appMetaWelcome.createApp,
   },
   {
-    id: 3,
+    id: 8,
     title: "menu9",
     action: appMetaAppsList.createApp,
   },
   {
-    id: 4,
+    id: 3,
     title: "menu3",
     action: appMetaProjects.createApp,
+  },
+  {
+    id: 11,
+    title: "menu11",
+    action: appMetaGallery.createApp,
   },
   {
     id: 2,
